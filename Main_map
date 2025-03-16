@@ -1,0 +1,22 @@
+import folium
+
+# Create a map centered around New Orleans, LA
+map_center = [29.95, -90.07]  # Approximate center of New Orleans
+m = folium.Map(location=map_center, zoom_start=11)
+
+# Golf course locations
+courses = {
+    "Stonebridge Golf Club": [29.8791, -90.0047],
+    "English Turn Golf & CC": [29.8868, -89.9723],
+    "TPC Louisiana": [29.9095, -90.2055],
+    "Bayou Oaks South": [29.9854, -90.0983]
+}
+
+# Add markers to the map
+for course, coords in courses.items():
+    folium.Marker(location=coords, popup=course, tooltip=course).add_to(m)
+
+# Save and display the map
+map_path = "/mnt/data/golf_courses_map.html"
+m.save(map_path)
+map_path
